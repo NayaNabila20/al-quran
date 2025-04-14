@@ -29,6 +29,11 @@ const DetailSurat = () => {
   if (loading) return <p>Loading...</p>;
   if (!surat) return <p>Surat tidak ditemukan.</p>;
 
+const murotalUrl = `https://equran.nos.wjv-1.neo.id/audio-full/Abdullah-Al-Juhany/${String(
+  surat.nomor
+).padStart(3, "0")}.mp3`;
+
+
   return (
     <>
       <div className="vh-100 overflow-auto p-4">
@@ -38,6 +43,17 @@ const DetailSurat = () => {
         <p>Jumlah Ayat: {surat.jumlahAyat}</p>
         <p>Arti: {surat.arti}</p>
         <p>Deskripsi: {parse(surat.deskripsi)}</p>
+
+        {/* Audio Murotal Full Surat */}
+        <div className="my-3">
+          <h5>Putar Murotal Lengkap:</h5>
+          <audio controls className="w-100">
+            <source src={murotalUrl} type="audio/mpeg" />
+            Browser Anda tidak mendukung elemen audio.
+          </audio>
+        </div>
+
+        {/* List Ayat */}
         <div className="mt-4">
           <ul className="list-group">
             {surat.ayat.map((ayat) => (
