@@ -31,33 +31,34 @@ const DetailSurat = () => {
 
   return (
     <>
-      <div className="vh-100 overflow-auto">
+      <div className="vh-100 overflow-auto p-4">
         <h2>
           {surat.namaLatin} ({surat.nama})
         </h2>
         <p>Jumlah Ayat: {surat.jumlahAyat}</p>
         <p>Arti: {surat.arti}</p>
         <p>Deskripsi: {parse(surat.deskripsi)}</p>
-        <div>
+        <div className="mt-4">
           <ul className="list-group">
             {surat.ayat.map((ayat) => (
-              <li key={ayat.nomorAyat}>
-                <div className="list-group-item d-flex justify-content-between">
-                  <span className=" align-items-center arabic-text">
-                    {ayat.teksArab}
-                  </span>
-                  <div className=" d-flex align-items-center">
-                    <span className="badge text-bg-primary rounded-sm d-flex align-items-center p-2 me-1">
+              <li key={ayat.nomorAyat} className="list-group-item">
+                <div className="d-flex justify-content-between align-items-start">
+                  <div className="flex-grow-1">
+                    <div className="arabic-text fs-4 mb-2">{ayat.teksArab}</div>
+                    <div className="teks-indonesia fst-italic text-secondary">
+                      {ayat.teksIndonesia}
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-center ms-3">
+                    <span className="badge text-bg-primary rounded-sm p-2 me-2">
                       {ayat.nomorAyat}
                     </span>
-                    <span>
-                      <AudioPlayer
-                        key={ayat.nomorAyat}
-                        url={ayat.audio["05"]}
-                        currentAudio={currentAudio}
-                        setCurrentAudio={setCurrentAudio}
-                      ></AudioPlayer>
-                    </span>
+                    <AudioPlayer
+                      key={ayat.nomorAyat}
+                      url={ayat.audio["05"]}
+                      currentAudio={currentAudio}
+                      setCurrentAudio={setCurrentAudio}
+                    />
                   </div>
                 </div>
               </li>
