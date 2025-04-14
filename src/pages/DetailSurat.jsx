@@ -29,11 +29,10 @@ const DetailSurat = () => {
   if (loading) return <p>Loading...</p>;
   if (!surat) return <p>Surat tidak ditemukan.</p>;
 
-const murotalUrl = `https://equran.nos.wjv-1.neo.id/audio-full/Abdullah-Al-Juhany/${String(
-  surat.nomor
-).padStart(3, "0")}.mp3`;
-
-
+  const murotalUrl = `https://equran.nos.wjv-1.neo.id/audio-full/Abdullah-Al-Juhany/${String(
+    surat.nomor
+  ).padStart(3, "0")}.mp3`;
+  
   return (
     <>
       <div className="vh-100 overflow-auto p-4">
